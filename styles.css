@@ -1,0 +1,527 @@
+/* reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none; /*Removes underlines*/
+    scroll-behavior: smooth;
+}
+
+#CB {
+    animation-timing-function: cubic-bezier(0, 0, 1, 1);
+}
+
+@keyframes slideInFromRight {
+    0% {
+        left: 60%;
+        width: 10%;
+        opacity: 0%;
+    }
+    100% {
+        left: 0px;
+        width:100%;
+        opacity: 100%;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        padding-bottom: 200px;
+        opacity: 0%;
+    }
+    to {
+        padding-bottom: 0;
+        opacity: 100%;
+    }
+}
+
+.headerSlidable {
+    animation: slideInFromRight 4s;
+    animation-fill-mode: forwards;
+}
+
+.education__section .institutions {
+    animation: fadeIn 4s;
+    animation-fill-mode: forwards;
+}
+
+body {
+    justify-content: center;
+    align-items: center;
+    font-family: 'Times New Roman', Times, serif;
+    overflow-x: hidden; /* nothing floating*/
+    color: #cdcdcd;
+    /* This is specificed for the Hamburger Menu */
+    transition: margin 0.5s cubic-bezier(0.072, 0.2, 0.05, 1.0);
+    margin-left: 0;
+}
+
+.menu__toggle {
+    display: block;
+    position: fixed;
+    
+    width: 32px;
+
+    top: 50px;
+    left: 50px;
+    z-index: 1;
+}
+
+.background__circle {
+    display: inline-block;
+    position: fixed;
+    height: 50px;
+    width: 50px;
+    background-color: #cecece;
+    border-radius: 50%;
+    top: 36px; /* Messed with this until it looked right*/
+    left: 41px;
+
+    z-index: 1;
+}
+
+.menu__toggle input[type="checkbox"] {
+    display: block;
+    width: 40px;
+    height: 32px;
+
+    position: absolute;
+    top: -7px;
+    left: -5px;
+
+    cursor: pointer;
+    z-index: 2;
+    opacity: 0;
+}
+
+.menu__toggle span{
+    display: block;
+    width: 33px;
+    height: 4px;
+    background-color: rgb(0, 0, 0);
+
+    margin-bottom: 5px;
+
+    position: relative;
+    z-index: 1;
+    /* Centers the 'x' in the menu */
+    transform-origin: 4px 0px;
+    transition: transform 0.5s  cubic-bezier(0.077, 0.2, 0.05, 1.0), opacity 0.5s ease;
+}
+
+.menu__toggle input:checked ~ span {
+    opacity: 1;
+    transform: rotate(45deg);
+    background-color: #232323;
+}
+
+.menu__toggle input:checked ~ span:nth-child(3) {
+    opacity: 0;
+}
+
+.menu__toggle input:checked ~ span:nth-child(4) {
+    transform: rotate(-45deg);
+    margin-left: -2px;
+}
+
+.menu__link {
+    position: absolute;
+    width: 300px;
+    height: 200vh; /*As far as visible */
+    margin: -100px 0 0 -50px;
+    padding: 125px 50px 50px 50px;
+
+    background-color: #ededed;
+
+    list-style: none;
+
+    transform: translate(-100%, 0); /*to hide */
+    transition: transform 0.5s cubic-bezier(0.077, 0.2, 0.05, 1.0);
+}
+
+/* Make the sections appear */
+.menu__toggle input:checked ~ ul{
+    transform: none;
+}
+
+
+.menu__link a{
+    color: rgb(41, 56, 71);
+}
+
+.menu__link a:hover {
+    color: orangered;
+    transition: color 0.4s ease;
+}
+
+.menu__link li {
+    padding: 10px 0;
+    font-size: 22;
+}
+
+.main__header {
+    position: relative;
+    text-align: left;
+    width: 100%;
+    height: 50%;
+    color: #ffffff;
+    z-index: 0;
+    margin-top: 0;
+    padding-bottom: 200px;
+    padding-top: 20px;
+    clip-path: polygon(0% 0%, 100% 0%, 100% calc(100% - 100px), 0% 100%);
+}
+
+.main__header h1 {
+    color: rgba(0, 0, 0, 0.3);
+    background-clip: text;
+    background-image: linear-gradient(90deg, #FAFFAF 0%, #96C9F4 33%, #FAFFAF 100%);
+    -webkit-text-fill-color: transparent;
+    font-size: 4em;
+    animation: slideInFromRight 5s;
+    animation-fill-mode: forwards;
+
+}
+
+.main__header_background__image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: url(public/assets/lightt.jpg);
+    background-size: cover;
+    z-index: -1;
+}
+
+.main__header_background__image::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Applies tint */
+    z-index: -1;
+}
+
+.main__header__profile__image {
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    /* width: 50%; */
+    border-radius: 50%;
+}
+
+.header__section__container {
+    display: flex;
+    align-items: center; 
+    justify-content: space-between;
+    /* grid-template-columns: 2fr 2fr; */
+    column-gap: 5px;
+}
+
+.main__header__text {
+    padding-top: 250px;
+    position: relative;
+    display: block;
+    padding-left: 40px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.main__header__text .b{
+    position: relative;
+    display: block;
+    color: #6999f0;
+}
+
+.education__section {
+    top: 0;
+    background-color: #232323;
+    padding-left: 10vh;
+    padding-right: 10vh;
+    margin-top: -101px;
+    position: relative;
+    text-align: left;
+    color: #ffffff;
+    clip-path: polygon(0% 100px, 100% 0%, 100% calc(100% - 100px), 0% 100%);
+    z-index: 0;
+    overflow: hidden; /* Ensure content doesn't overflow from the clipped area */
+    padding-top: 20vh;
+    padding-bottom: 200px;
+    z-index: -2;
+}
+
+.education__section__image {
+    position: fixed; 
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: url(public/assets/treee.jpg);
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+}
+
+.education__section h2 {
+    font-size: large;
+}
+
+.education__section .vassar__education__section {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    grid-gap: 0;
+    width: 85%;
+    padding-right: 20px;
+}
+
+.education__section .institutions .education__wrapper {
+    display: grid;
+    margin: 10px;
+    grid-template-columns: 4fr 2fr;
+}
+
+.education__section .institutions .education__left__side {
+    padding-top: 20px;
+    padding-left: 20px;
+    overflow: visible;
+    text-align: left;
+}
+
+.education__section .institutions .education__right__side {
+    padding-top: 20px;
+    padding-right: 20px;
+    text-align: right;
+}
+
+.education__section .institutions p{
+    padding-left: 100px;
+}
+.education__section .institutions ul{
+    padding-left: 100px;
+}
+
+.projects__section {
+    top: 250px;
+    background-color: #00491c;
+    margin-top: -351px;
+    margin-left: 0;
+    margin-right: 0;
+    padding-right: 12vh;
+    padding-left: 12vh;
+    position: relative;
+    text-align: left;
+    width: 100%;
+    height: 50%;
+    color: #ffffff;
+    clip-path: polygon(0% 100px, 100% 0%, 100% calc(100% - 100px), 0% 100%);
+    z-index: 0;
+    overflow: hidden; /* Ensure content doesn't overflow from the clipped area */
+    padding-top: 200px;
+    padding-bottom: 200px;
+}
+
+.projects__section .projects__section__image {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: url('public/assets/aeshtetic.gif');
+    background-size: cover;
+    background-position: center;
+    z-index: -2;
+    
+}
+
+/* Project section */
+.projects__slider {
+    background-color: #000000;
+    z-index: 1;
+    height: 500px;
+    border: 1px solid rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    flex-direction: column;
+    margin: auto;
+}
+
+.slider__wrapper {
+    width: 70%;
+    max-width: 1600px; 
+    margin: auto;
+    padding: 50px;
+}
+
+.my__slider {
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    max-height: 400px;
+}
+
+.container {
+    display: flex;
+    max-width: 1600px;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    margin: auto;
+    background-color: #0000008f;
+}
+
+.container .subcontainer {
+    display: flex;
+    max-width: 1600px;
+    width: 100%;
+    width: 85%;
+    margin: auto;
+}
+
+.slide__image {
+    width: 100%;
+    height: 275px;
+    border-radius: 5%;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content:  center;
+    align-items: center;
+    transform: 0.5s;
+    cursor: pointer;
+    z-index: 5;
+}
+
+.slide__image:hover {
+    box-shadow: 0 0 0 200px rgba(0, 0, 0, 0.555) inset;
+}
+
+.slide__image a{
+    opacity: 0;
+    text-decoration: none;
+    transform: scale(0);
+    transition: 0.8s;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.slide__image:hover a{
+    opacity: 1;
+    transform: scale(1);
+}
+
+.img__one {
+    background-image: url(public/assets/tailor.jpg);
+}
+
+.img__two {
+    background-image: url('public/assets/hangman.jpg');
+}
+
+.img__three {
+    background-image: url('public/assets/hand-man-using-laptop-computer-dark_141345-69.avif');
+}
+
+@media(max-width:1600px){
+    .container {
+        width: 100%;
+    }
+}
+
+.get__in__touch {
+    margin-top: 149px;
+    position: relative;
+    text-align: center;
+    width: 100%;
+    height: 50%;
+    color: #ffffff;
+    clip-path: polygon(0% 100px, 100% 0%, 100% 100%, 0% 100%);
+    z-index: 0;
+    overflow: hidden; /* Ensure content doesn't overflow from the clipped area */
+    padding-top: 200px;
+    padding-bottom: 200px;
+    z-index: 0;
+}
+
+.get__in__touch h1 {
+    color: #6999f0;
+    font-size: 3em;
+    padding-bottom: 70px;
+}
+
+.get__in__touch p {
+    font-size: 1.5em;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+
+.contact__background__image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: url('public/assets/black_textured_background.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-color: #361d1d;
+    z-index: -3;
+}
+
+.contact__background__image::before{
+    background-color: rgba(230, 134, 134, 0.5); /* Applies tint */
+    z-index:-3;
+}
+
+/* Style all font awesome icons */
+.fa {
+    display: flex;
+    cursor: pointer;
+    padding: 30px;
+    margin-right: 40px;
+    margin-left: 40px;
+    border-radius: 50%;
+}
+
+.link__icons {
+    position: relative;
+    margin-bottom: 70px;
+}
+  
+/* Add a hover effect if you want */
+.fa:hover {
+ cursor: pointer;
+ opacity: 0.7;
+}
+  
+/* Set a specific color for each brand */
+  
+/* Linked In */
+.fa-linkedin {
+  background: #274c9b;
+  color: white;
+}
+
+/* Github */
+.fa-instagram {
+  background-image: linear-gradient(90deg, #f9ce34 0%, #ee2a7b 33%, #6228d7 100%);
+  color: white;
+}
+
+/* Email */
+.fa-envelope {
+  background: #9c1010;
+  color: white;
+}
+.fa-download {
+  background: #ffffff00;
+  color: rgb(255, 255, 255);
+}
+
